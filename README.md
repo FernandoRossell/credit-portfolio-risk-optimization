@@ -25,18 +25,23 @@ El caso está diseñado para replicar desafíos reales enfrentados por equipos s
 - Calcular métricas financieras clave como:
   - Expected Loss (EL)
   - Expected Profit
+
 - Diseñar y comparar **políticas de aprobación de crédito**:
   - Basadas exclusivamente en riesgo (PD)
   - Basadas en rentabilidad esperada del cliente y del portafolio
+
 - Evaluar el impacto de dichas políticas sobre indicadores clave de negocio:
   - Approval rate
   - Default rate
   - Profit esperado del portafolio
+
 - Implementar y evaluar **modelos de mayor complejidad** (por ejemplo, Support Vector Machines y Redes Neuronales) como modelos *challenger*, comparándolos contra enfoques tradicionales en términos de:
+
   - Performance predictiva
   - Calibración de probabilidades
   - Estabilidad temporal
   - Explicabilidad y gobernanza
+  
 - Justificar la **selección final del modelo** priorizando soluciones más simples y robustas cuando estas ofrecen un mejor balance entre desempeño, interpretabilidad y viabilidad operativa.
 - Simular escenarios adversos y realizar stress testing para analizar la **robustez del sistema de decisión crediticia** bajo cambios macroeconómicos.
 - Traducir resultados técnicos en **insights accionables para toma de decisiones ejecutivas**, enfocados en impacto económico y control de riesgo.
