@@ -8,7 +8,7 @@
 **Authors:** Abel Soto & Francisco Fonseca
 
 ---
-git
+
 ## Visión general
 
 En la banca minorista, las decisiones de aprobación de crédito suelen basarse exclusivamente en métricas de riesgo como la probabilidad de default. Sin embargo, esta aproximación ignora un aspecto crítico: **la rentabilidad esperada del portafolio**.
