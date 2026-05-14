@@ -1,0 +1,13 @@
+[project]
+name = "credit-risk-portfolio-optimization"
+version = "0.1.0"
+description = "Skeleton repo for credit default prediction and portfolio optimization"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

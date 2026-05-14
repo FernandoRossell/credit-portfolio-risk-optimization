@@ -1,0 +1,17 @@
+models:
+  - name: logistic_regression
+    enabled: true
+  - name: lightgbm
+    enabled: true
+  - name: xgboost
+    enabled: true
+  - name: catboost
+    enabled: false
+
+evaluation:
+  metrics:
+    - roc_auc
+    - pr_auc
+    - ks
+    - brier_score
+    - recall_at_top_decile

@@ -1,206 +1,59 @@
-# Credit Portfolio Risk & Profit Optimization
+# Credit Portfolio Optimization & Default Prediction Platform
 
+Proyecto esqueleto para construir un sistema end-to-end de predicción de default y optimización de portafolio de crédito usando el dataset **Home Credit Default Risk**.
 
-**Caso de negocio:** From Credit Risk Modeling to Profit-Driven Decision Making
-
-**Stack:** 
-
-**Authors:** Abel Soto & Francisco Fonseca
-
----
-
-## Visión general
-
-En la banca minorista, las decisiones de aprobación de crédito suelen basarse exclusivamente en métricas de riesgo como la probabilidad de default. Sin embargo, esta aproximación ignora un aspecto crítico: **la rentabilidad esperada del portafolio**.
-
-Este proyecto propone un **framework analítico de extremo a extremo** para optimizar decisiones de crédito, balanceando riesgo y retorno económico. El enfoque combina **machine learning, métricas financieras y simulación de políticas**, con el objetivo de maximizar el beneficio esperado bajo restricciones de riesgo.
-
-El caso está diseñado para replicar desafíos reales enfrentados por equipos senior de analytics en instituciones financieras.
+> **Propósito del repositorio**
+> Este proyecto está diseñado como **ejercicio de portafolio** para demostrar habilidades de data science, data engineering y MLOps.
+> No está pensado como sistema productivo final ni requiere licencias empresariales o servicios de pago.
 
 ---
 
-## Objetivos del proyecto
+## Qué demuestra este proyecto
+- Data science aplicada a riesgo de crédito
+- Data engineering y diseño de pipelines
+- Orquestación con Airflow
+- Experiment tracking y model registry con MLflow
+- Data quality y governance
+- Serving batch/API y monitoreo
+- Testing para mantenimiento y evolución futura
 
-- Estimar la **Probability of Default (PD)** a nivel cliente utilizando modelos estadísticos y de machine learning, estableciendo un baseline interpretable y modelos no lineales avanzados.
-- Calcular métricas financieras clave como:
-  - Expected Loss (EL)
-  - Expected Profit
+## Restricciones consideradas
+### 1. Sin licencias de pago
+La arquitectura se apoya en herramientas open source y ejecución local.
 
-- Diseñar y comparar **políticas de aprobación de crédito**:
-  - Basadas exclusivamente en riesgo (PD)
-  - Basadas en rentabilidad esperada del cliente y del portafolio
+### 2. Sin subir CSV raw al repositorio
+La data raw se descarga manualmente y se mantiene fuera del control de versiones.
 
-- Evaluar el impacto de dichas políticas sobre indicadores clave de negocio:
-  - Approval rate
-  - Default rate
-  - Profit esperado del portafolio
-
-- Implementar y evaluar **modelos de mayor complejidad** (por ejemplo, Support Vector Machines y Redes Neuronales) como modelos *challenger*, comparándolos contra enfoques tradicionales en términos de:
-
-  - Performance predictiva
-  - Calibración de probabilidades
-  - Estabilidad temporal
-  - Explicabilidad y gobernanza
-  
-- Justificar la **selección final del modelo** priorizando soluciones más simples y robustas cuando estas ofrecen un mejor balance entre desempeño, interpretabilidad y viabilidad operativa.
-- Simular escenarios adversos y realizar stress testing para analizar la **robustez del sistema de decisión crediticia** bajo cambios macroeconómicos.
-- Traducir resultados técnicos en **insights accionables para toma de decisiones ejecutivas**, enfocados en impacto económico y control de riesgo.
+### 3. Testing para mantenimiento futuro
+El repo ya incluye estructura de pruebas unitarias, integración y fixtures sintéticos.
 
 ---
 
-## Fuente de los datos
+## Política de datos
+**Sí se sube:** código, documentación, DAGs, configs, tests, muestras sintéticas pequeñas.  
+**No se sube:** raw CSV, outputs pesados, modelos binarios grandes, credenciales.
 
-### Dataset principal
-
-El proyecto utiliza el **Home Credit Default Risk Dataset**, un dataset público ampliamente usado para problemas de credit scoring.
-
-- **Proveedor:** Home Credit Group  
-- **Plataforma:** Kaggle  
-- **Tipo de problema:** Clasificación binaria (default / no default)
-
-El dataset incluye información como:
-- Datos demográficos
-- Ingresos
-- Historial crediticio
-- Comportamiento financiero
-
-### Variables adicionales (sintéticas)
-
-Para habilitar el análisis económico, se generan variables adicionales bajo supuestos realistas:
-
-- Monto del crédito
-- Tasa de interés
-- Plazo del préstamo
-- Loss Given Default (LGD)
-
-> Estas variables sintéticas están documentadas y se utilizan exclusivamente para simular un entorno de decisión financiera realista.
+Ver también:
+- `docs/assumptions_and_constraints.md`
+- `docs/testing_strategy.md`
+- `docs/implementation_plan_6_weeks.md`
 
 ---
 
-## Enfoque analítico
-
-### Modelado de riesgo crediticio
-- Modelo baseline: Regresión logística
-- Modelo principal: Gradient Boosting (XGBoost)
-- Métricas de evaluación:
-  - ROC-AUC
-  - KS statistic
-  - Calibration curves
-- Interpretabilidad:
-  - Feature importance
-  - SHAP values
+## Quickstart
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+docker compose up -d
+make test
+```
 
 ---
 
-### Métricas financieras
-
-Para cada solicitud de crédito se estiman:
-
-- **Expected Loss (EL):**
-
-\[
-EL = PD \times LGD \times Exposure
-\]
-
-- **Expected Profit:**
-
-\[
-Expected\ Profit = Interest\ Income - Expected\ Loss
-\]
-
-Estas métricas permiten evaluar decisiones desde una perspectiva económica y no únicamente desde el riesgo.
-
----
-
-### Políticas de aprobación
-
-Se comparan distintas estrategias de decisión:
-
-- Cut-off fijo por PD
-- Cut-off basado en profit esperado
-- Políticas segmentadas por perfil de cliente
-
-Cada política es evaluada utilizando indicadores de negocio a nivel portafolio.
-
----
-
-## Testing & Validación
-*(Sección a completar)*
-
--  
--  
--  
-
----
-
-## Análisis de Hot Spots del programa
-*(Sección a completar)*
-
--  
--  
--  
-
----
-
-## Supuestos asumidos
-*(Sección a completar)*
-
--  
--  
--  
-
----
-
-## ¿Dónde se rompen los supuestos?
-*(Sección a completar)*
-
--  
--  
--  
-
----
-
-## Posible implementación en producción
-*(Sección a completar)*
-
-**Arquitectura propuesta**
--  
--  
--  
-
-**Consideraciones operativas**
--  
--  
--  
-
----
-
-## Resultados esperados
-
-El enfoque orientado a rentabilidad permite:
-
-- Mejorar el profit esperado del portafolio
-- Reducir rechazos innecesarios
-- Controlar el riesgo bajo límites definidos
-- Habilitar decisiones crediticias más informadas y explicables
-
-> Los resultados finales dependen de los escenarios y parámetros simulados.
-
----
-
-## Extensiones futuras
-
-- Pricing dinámico basado en riesgo
-- Modelado dinámico de EAD
-- Análisis de fairness y bias
-- Integración de aceptación del cliente (take-up rate)
-
----
-
-## Conclusión
-
-Este proyecto demuestra cómo un sistema tradicional de credit scoring puede evolucionar hacia un **motor de decisión financiera orientado a valor**, integrando análisis predictivo, métricas económicas y criterio de negocio.
-
-El foco no está en maximizar métricas técnicas, sino en **optimizar decisiones reales con impacto económico**, reflejando el trabajo esperado de perfiles senior en analytics para banca.
-
----
+## Rutas clave
+- `data/raw/` → aquí colocas manualmente los CSV
+- `data/processed/` → salidas intermedias locales
+- `data/features/` → featuresets locales
+- `docs/implementation_plan_6_weeks.md` → plan principal de trabajo
+- `docs/testing_strategy.md` → estrategia de testeo y mantenibilidad
