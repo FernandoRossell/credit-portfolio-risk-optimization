@@ -111,20 +111,6 @@ Home Credit Raw Tables (bureau, previous_application, installments, etc.)
 
 ---
 
-## Data Policy
-
-| What | Status |
-|---|---|
-| Source code, DAGs, configs | Versioned |
-| Tests & synthetic fixtures | Versioned |
-| Documentation | Versioned |
-| Raw CSVs, model binaries | Git-ignored |
-| Credentials / secrets | Git-ignored |
-
-Raw data must be downloaded manually from [Kaggle](https://www.kaggle.com/c/home-credit-default-risk) and placed in `data/raw/`.
-
----
-
 ## Quickstart
 
 ```bash
