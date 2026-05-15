@@ -1,6 +1,6 @@
 # Credit Portfolio Optimization & Default Prediction Platform
 
-> **End-to-end portfolio project** demonstrating senior-level Data Science, Data Engineering, and MLOps skills applied to credit risk — covering default prediction, model explainability, pipeline orchestration, and production-grade serving infrastructure.
+> **End-to-end portfolio project** demonstrating senior-level Data Science, Data Engineering, and MLOps skills applied to credit risk - covering default prediction, model explainability, pipeline orchestration, and production-grade serving infrastructure.
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
 ![Airflow](https://img.shields.io/badge/Airflow-2.x-017CEE?logo=apache-airflow)
@@ -27,14 +27,14 @@
 
 ## Overview
 
-This platform is built on the **[Home Credit Default Risk](https://www.kaggle.com/c/home-credit-default-risk)** dataset — a multi-table, real-world credit dataset covering applicant demographics, credit bureau history, previous loan behavior, and installment patterns.
+This platform is built on the **[Home Credit Default Risk](https://www.kaggle.com/c/home-credit-default-risk)** dataset - a multi-table, real-world credit dataset covering applicant demographics, credit bureau history, previous loan behavior, and installment patterns.
 
 The system demonstrates the full lifecycle of a credit risk model:
 
-1. **Ingestion & data engineering** — joining multiple source tables, handling imbalanced data, feature engineering from behavioral history.
-2. **Default prediction** — binary classification with calibrated probability outputs suitable for scorecard-style decisions.
-3. **Portfolio optimization** — threshold selection, expected loss estimation, risk-return tradeoffs at portfolio level.
-4. **Model monitoring** — concept drift detection, PSI tracking, and automated retraining triggers.
+1. **Ingestion & data engineering** - joining multiple source tables, handling imbalanced data, feature engineering from behavioral history.
+2. **Default prediction** - binary classification with calibrated probability outputs suitable for scorecard-style decisions.
+3. **Portfolio optimization** - threshold selection, expected loss estimation, risk-return tradeoffs at portfolio level.
+4. **Model monitoring** - concept drift detection, PSI tracking, and automated retraining triggers.
 
 This is not intended as a production system. It is a structured portfolio exercise designed to demonstrate depth across the full DS/DE stack in a regulated-domain context.
 
@@ -80,32 +80,32 @@ This is not intended as a production system. It is a structured portfolio exerci
 ```
 Home Credit Raw Tables (bureau, previous_application, installments, etc.)
         │
-        ▼
+        v
 ┌──────────────────────────┐
-│  Ingestion & Validation   │  ← Airflow DAG + Pandera schemas
+│  Ingestion & Validation   │  <- Airflow DAG + Pandera schemas
 └────────────┬─────────────┘
              │
-             ▼
+             v
 ┌──────────────────────────┐
-│   Feature Engineering     │  ← Aggregations, behavioral ratios, bureau features
+│   Feature Engineering     │  <- Aggregations, behavioral ratios, bureau features
 └────────────┬─────────────┘
              │
-             ▼
+             v
 ┌──────────────────────────┐
-│   Model Training          │  ← LightGBM + MLflow tracking
+│   Model Training          │  <- LightGBM + MLflow tracking
 │   (CV + Calibration)      │
 └────────────┬─────────────┘
              │
         ┌────┴────┐
-        ▼         ▼
+        v         v
 ┌──────────┐  ┌──────────────┐
-│  Batch   │  │  API Serving │  ← FastAPI / scoring endpoint
+│  Batch   │  │  API Serving │  <- FastAPI / scoring endpoint
 │ Scoring  │  │              │
 └──────────┘  └──────────────┘
              │
-             ▼
+             v
 ┌──────────────────────────┐
-│  Monitoring & Drift       │  ← Evidently AI + alerting
+│  Monitoring & Drift       │  <- Evidently AI + alerting
 └──────────────────────────┘
 ```
 
@@ -115,11 +115,11 @@ Home Credit Raw Tables (bureau, previous_application, installments, etc.)
 
 | What | Status |
 |---|---|
-| Source code, DAGs, configs | ✅ Versioned |
-| Tests & synthetic fixtures | ✅ Versioned |
-| Documentation | ✅ Versioned |
-| Raw CSVs, model binaries | ❌ Git-ignored |
-| Credentials / secrets | ❌ Git-ignored |
+| Source code, DAGs, configs | Versioned |
+| Tests & synthetic fixtures | Versioned |
+| Documentation | Versioned |
+| Raw CSVs, model binaries | Git-ignored |
+| Credentials / secrets | Git-ignored |
 
 Raw data must be downloaded manually from [Kaggle](https://www.kaggle.com/c/home-credit-default-risk) and placed in `data/raw/`.
 
@@ -241,7 +241,7 @@ make run-ingestion
 ## Key Design Decisions
 
 - **Multi-table feature engineering:** The dataset's complexity (7+ joined tables) simulates real data warehouse environments. Feature aggregation logic is separated from modeling to enforce reusability and testability.
-- **Calibrated probability outputs:** Raw classifier scores are calibrated (Platt / isotonic) to produce reliable PD estimates suitable for expected loss calculations — a standard requirement in risk contexts.
+- **Calibrated probability outputs:** Raw classifier scores are calibrated (Platt / isotonic) to produce reliable PD estimates suitable for expected loss calculations - a standard requirement in risk contexts.
 - **Threshold optimization beyond accuracy:** Default classification uses KS statistic and F-beta optimization rather than naive 0.5 threshold, reflecting real credit decisioning trade-offs.
 - **PSI monitoring built in:** Population Stability Index tracking is included from day one, since distribution shift is the dominant failure mode in credit models deployed over time.
 - **Batch + API serving:** Demonstrates both the offline scoring pipeline (for portfolio-level decisions) and an online serving pattern (for real-time applications).
@@ -250,6 +250,6 @@ make run-ingestion
 
 ## Documentation
 
-- [`docs/implementation_plan_6_weeks.md`](docs/implementation_plan_6_weeks.md) — Phased delivery plan
-- [`docs/testing_strategy.md`](docs/testing_strategy.md) — Testing approach and maintainability rationale
-- [`docs/assumptions_and_constraints.md`](docs/assumptions_and_constraints.md) — Scope, limitations, and design choices
+- [`docs/implementation_plan_6_weeks.md`](docs/implementation_plan_6_weeks.md) - Phased delivery plan
+- [`docs/testing_strategy.md`](docs/testing_strategy.md) - Testing approach and maintainability rationale
+- [`docs/assumptions_and_constraints.md`](docs/assumptions_and_constraints.md) - Scope, limitations, and design choices
