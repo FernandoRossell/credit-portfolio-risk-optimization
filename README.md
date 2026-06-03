@@ -1,4 +1,4 @@
-j# Credit Portfolio Optimization & Default Prediction Platform
+# Credit Portfolio Optimization & Default Prediction Platform
 
 
 > **Authors: Fernando Abel and Francisco Fonseca** 
