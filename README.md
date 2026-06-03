@@ -1,4 +1,8 @@
-# Credit Portfolio Optimization & Default Prediction Platform
+j# Credit Portfolio Optimization & Default Prediction Platform
+
+
+> **Authors: Fernando Abel and Francisco Fonseca** 
+
 
 > **End-to-end portfolio project** demonstrating senior-level Data Science, Data Engineering, and MLOps skills applied to credit risk - covering default prediction, model explainability, pipeline orchestration, and production-grade serving infrastructure.
 
